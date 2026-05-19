@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+
+        <title><strong>Cadastro de Cliente</strong></title>
+
+
+    <!-- CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>Cadastrar Cliente</h2>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div class="msg">
+                    <strong>{{ message }}</strong>
+                </div>
+            {% endfor %}
+        {% endwith %}
+
+        <form
+            action="/enviar"
+            method="post"
+            onsubmit="return validarFormulario()"
+        >
+
+            <label>Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label>Email:</label>
+            <input type="email" name="email" required>
+
+            <label>Telefone:</label>
+            <input type="text" name="telefone">
+
+            <label>Cidade:</label>
+
+<select id="cidades" name="cidades">
+  <option value="sp">São Paulo</option>
+  <option value="rj">Rio de Janeiro</option>
+  <option value="bh">Belo Horizonte</option>
+  <option value="bsb">Brasília</option>
+  <option value="cur">Curitiba</option>
+  <!-- Adicione mais cidades aqui -->
+</select>
+
+            <button type="submit">
+                Cadastrar
+            </button>
+
+        </form>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script
+        src="{{ url_for('static', filename='js/script.js') }}"
+    ></script>
+
+</body>
+</html>
